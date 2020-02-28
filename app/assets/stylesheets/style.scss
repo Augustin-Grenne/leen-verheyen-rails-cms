@@ -1,0 +1,422 @@
+
+/*				General			*/
+
+* {
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	font-family: 'Merriweather', georgia, serif;
+    background-image: url("../img/cork_small.jpg");	
+	color: #222;
+}
+
+.clrfix:after{
+	content: "";
+	display: block;
+    clear: both;
+}
+
+// links
+a:link{
+	color: lightseagreen;
+}
+
+ a:active{
+	text-shadow: 1px 1px #ccc;
+}
+
+a:visited{
+	color: seagreen;
+}
+
+
+/* 			SCSS 			*/
+
+// create a visual sheet of paper
+%note{
+	margin: 50px auto;
+	padding: 75px 50px;
+	background-color: white;
+	max-width: 650px;
+	box-shadow: 1px 1px 3px #555, -1px 1px 5px #555;
+	position: relative;
+}
+
+// display image of tack in the top middle of sheet of paper
+%tack_top_middle{
+	content: "";
+	position: absolute;
+	background-image: url("../img/tack.png");
+	top: -25px;
+	left: 50%;
+	width: 75px;
+	height: 71px;
+	transform: translateX(-60%);
+}
+// display image of tack in the top left of sheet of paper
+%tack_top_left{
+	content: "";
+	position: absolute;
+	background-image: url("../img/tack.png");
+	top: -25px;
+	left: -40px;
+	width: 75px;
+	height: 71px;
+}
+// display image of tack in the top right of sheet of paper
+%tack_top_right{
+	content: "";
+	position: absolute;
+	background-image: url("../img/tack.png");
+	top: -25px;
+	right: -20px;
+	width: 75px;
+	height: 71px;
+}
+
+
+
+/* 			header 			*/
+.note{
+	@extend %note;
+}
+
+.note:before{
+	@extend %tack_top_middle;
+	-webkit-filter: hue-rotate(0deg); /* Safari */
+    filter: hue-rotate(0deg);
+}
+
+nav{
+	text-align: center;
+}
+
+nav li{
+	list-style-type: none;
+	cursor: pointer;
+}
+
+// so content will be centered
+nav li:first-child, #fullNav ul li:first-child{
+	margin-left: 0;	
+}
+
+nav a, nav a:link{
+	font-family: 'Permanent Marker';
+	text-decoration: none;
+	display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 100%;
+    color: #222;
+}
+
+nav a:link, nav a:visited{
+	color: #222;
+}
+
+nav ul li a:active {
+	color: grey;
+}
+
+
+#fullNav li:hover{
+	background-color: lightseagreen;
+}
+
+.hamburger{
+	font-family: "Permanent Marker";
+	font-weight: bold;
+	line-height: 0.25;
+	font-size: 60px;
+	display: inline-block;	
+	color: #222;
+	margin-left: 0!important;	
+	padding-top: 35px!important;
+}
+
+// drop last three smaller items to allign with larger logo
+#fullNav li:nth-child(1n+2){
+	margin-top: 345px / 2px + 50px;
+	margin-bottom: 0;
+	transform: translateY(-50%);
+}
+
+/*			Menu			*/
+
+/*
+// structure of both nav's and mobile menu (opened)
+
+nav#mobileNav
+	ul
+		li.hamburger
+		li > a > img.logo
+
+nav
+	ul#mobileMenu
+		li.hamburger
+		li > a * 4
+
+nav 
+	ul
+		li > a >img.logo
+		li > a * 3
+*/
+#mobileNav{
+	ul{
+		display: inline-block;
+		li{
+			margin: 50px auto;		
+			text-align: center;
+
+			padding: 25px;
+			float: left;
+			transition: all 0.2s;
+			cursor: pointer;
+
+			margin-left: 50px;
+		}
+		
+	}
+}
+
+.menuHidden{
+	top: 100%!important;
+}
+
+#mobileMenu{
+	padding: 25px 0;
+	width: 100vw; 
+	min-height: 100%;
+	max-height: 100%;
+	height: 100vh;
+	max-width: 100%;
+	min-width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	background-color: white;
+	overflow: scroll;
+	transition: all 0.8s;
+
+	li{
+		display: block;
+		text-align: center;
+		margin-left: 0;
+		float: none;
+		a{
+			line-height: 3;
+			font-size: 26px;
+		}
+	}
+	li:first-child{
+		margin-bottom: 50px;	
+	}
+	li:last-child{
+		margin-top: 50px;	
+	}
+}
+
+#fullNav{
+	ul{
+		display: inline-block;
+		li{
+			padding: 25px;
+			float: left;
+			transition: all 0.2s;
+			cursor: pointer;
+
+			padding-top: 75px;
+			margin-left: 50px;
+			a{
+
+			}
+		}
+	}
+}
+
+
+/*			main / content			*/
+
+main {	
+    font-size: 16px;
+    line-height: 2;
+	padding: 90px 0;
+}
+
+// every article appears as if on a sheet of paper
+article{
+	@extend %note;
+}
+// add the tack to the article
+article:after{
+	@extend %tack_top_middle;
+}
+
+
+
+/*			footer			*/
+
+footer {
+	@extend %note;
+	max-width: 100%;
+	min-width: 100%;
+	font-size: 14px;
+	line-height: 1.75;
+	padding: 50px;
+	text-align: center;	
+}
+
+footer:before{
+	@extend %tack_top_left;
+}
+
+footer:after{
+	@extend %tack_top_right;
+}
+
+
+footer ul li{
+	list-style-type: none;
+}
+
+.twit{
+	margin-top: 25px;
+	display: inline-block;
+}
+
+// credits
+#website_by{
+	font-family: Philosopher;
+}
+
+
+/*			media			*/
+
+// images
+.tackWrapper{
+	// centered wrapper to position the tacks, two for each image
+	position: relative;
+	display: inline-block;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.tackWrapper:before{
+	@extend %tack_top_left;
+}
+
+.tackWrapper:after{
+	@extend %tack_top_right;
+}
+// extra breeding room for 'eyecatcher'
+.imgHome{
+	margin-bottom: 125px;
+}
+
+.extraLeen{
+	margin-top: 50px;	
+}
+
+// video
+.vid{
+	position: relative;
+    overflow: hidden;
+    margin: 25px 0;
+}
+
+.vimeo{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+
+.youtube {
+	background-color: #000;
+	position: relative;
+	padding-top: 56.25%;
+	overflow: hidden;
+	cursor: pointer;
+}
+.youtube img {
+	width: 100%;
+	top: -16.82%;
+	left: 0;
+	opacity: 0.7;
+}
+.youtube .play-button {
+	width: 90px;
+	height: 60px;
+	background-color: #333;
+	box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+	z-index: 1;
+	opacity: 0.8;
+	border-radius: 6px;
+}
+.youtube .play-button:before {
+	content: "";
+	border-style: solid;
+	border-width: 15px 0 15px 26.0px;
+	border-color: transparent transparent transparent #fff;
+}
+.youtube img,
+.youtube .play-button {
+	cursor: pointer;
+}
+.youtube img,
+.youtube iframe,
+.youtube .play-button,
+.youtube .play-button:before {
+	position: absolute;
+}
+.youtube .play-button,
+.youtube .play-button:before {
+	top: 50%;
+	left: 50%;
+	transform: translate3d( -50%, -50%, 0 );
+}
+.youtube iframe {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+/*			media queries & bootstrap			*/
+
+@import '_bootstrap_grid';
+@import '_bootstrap_resp_utils';
+
+// xs < 768px  mobile  DEFAULT
+// sm > 768px  tablet
+// md > 992px  laptop
+//lg > 1200px  desktop
+
+// SM
+@media (min-width: 768px) {
+	
+    footer{
+  	  text-align: left;
+    }
+}
+
+// MD
+@media (min-width: 992px) {
+
+}
+
+// LG
+@media (min-width: 1200px) {
+  
+}
+
