@@ -1,0 +1,28 @@
+%h2 
+  Aanmaken nieuw nieuwsitem
+
+.note
+  = form_for @news_item do |f|
+    .row
+      .col 
+        = f.label :title, "Titel"
+      .col  
+        = f.text_field :title, { :placeholder => "verplicht" }
+    .row
+      .col 
+        = f.label :body, "Bericht"
+      .col
+        = f.text_area :body, { :placeholder => "verplicht" }
+    .row 
+      .col
+        = f.label :show, "Bericht publiceren"
+        = f.check_box :show, { :value => "published", :checked => true }
+      .col
+        - if @news_item.errors.any?
+          %ul
+          - @news_item.errors.full_messages.each do |msg|
+            %li
+              = msg
+      .col
+        %button 
+          = f.submit "Bericht aanmaken"
