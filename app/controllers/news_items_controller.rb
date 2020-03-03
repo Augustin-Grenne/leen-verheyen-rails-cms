@@ -4,7 +4,6 @@ class NewsItemsController < ApplicationController
   end
 
   def create
-    #render plain: params[:news_item].inspect
     @news_item = NewsItem.new(news_item_params)
     if @news_item.save
       flash[:notice] = "The news item was sucessfully created."
@@ -16,6 +15,20 @@ class NewsItemsController < ApplicationController
 
   def show
     @news_item =  NewsItem.find(params[:id])
+  end
+
+  def edit
+    @news_item = NewsItem.find(params[:id])
+  end
+
+  def update
+    @news_item = NewsItem.find(params[:id])
+    if @news_item.update(news_item_params)
+      flash[:notice] = "The news item was sucessfully updated."
+      redirect_to news_item_path(@news_item)
+    else 
+      render :edit
+    end
   end
 
 private
