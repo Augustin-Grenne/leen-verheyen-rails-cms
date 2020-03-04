@@ -1,0 +1,10 @@
+.row
+- @news_items.each do |news_item|  
+  .col-xs-6
+    %article.note
+      %h3
+        = news_item.title
+      %span.edit 
+        = link_to :edit, edit_news_item_path(news_item)
+      %p  
+        = news_item.body

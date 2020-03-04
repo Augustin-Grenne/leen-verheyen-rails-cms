@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "filosofie", to:"pages#filosofie"
   get "literatuur", to:"pages#literatuur"
-  get "nieuws", to:"pages#nieuws"
 
   scope(path_names: { new: "nieuw" }) do
     resources :news_items, path: "nieuws"

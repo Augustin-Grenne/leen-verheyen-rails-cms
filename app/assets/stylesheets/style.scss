@@ -9,7 +9,7 @@
 
 body {
 	font-family: 'Merriweather', georgia, serif;
-    background-image: url("../img/cork_small.jpg");	
+    background-image: url("cork_small.jpg");	
 	color: #222;
 }
 
@@ -49,7 +49,7 @@ a:visited{
 %tack_top_middle{
 	content: "";
 	position: absolute;
-	background-image: url("../img/tack.png");
+	background-image: url("tack.png");
 	top: -25px;
 	left: 50%;
 	width: 75px;
@@ -60,7 +60,7 @@ a:visited{
 %tack_top_left{
 	content: "";
 	position: absolute;
-	background-image: url("../img/tack.png");
+	background-image: url("tack.png");
 	top: -25px;
 	left: -40px;
 	width: 75px;
@@ -70,7 +70,7 @@ a:visited{
 %tack_top_right{
 	content: "";
 	position: absolute;
-	background-image: url("../img/tack.png");
+	background-image: url("tack.png");
 	top: -25px;
 	right: -20px;
 	width: 75px;
