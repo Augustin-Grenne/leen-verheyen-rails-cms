@@ -1,3 +1,4 @@
+@import 'bootstrap/dist/css/bootstrap';
 
 /*				General			*/
 
@@ -394,8 +395,8 @@ footer ul li{
 
 /*			media queries & bootstrap			*/
 
-@import '_bootstrap_grid';
-@import '_bootstrap_resp_utils';
+//@import '_bootstrap_grid';
+//@import '_bootstrap_resp_utils';
 
 // xs < 768px  mobile  DEFAULT
 // sm > 768px  tablet
