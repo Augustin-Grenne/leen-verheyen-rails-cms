@@ -1,0 +1,33 @@
+@font-face {
+	font-family: "Merriweather";
+	src: font-url("Merriweather/Merriweather-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Merriweather Bold";
+	src: font-url("Merriweather/Merriweather-Bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Merriweather Italic";
+	src: font-url("Merriweather/Merriweather-Italic.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Permanent Marker";
+	src: font-url("Permanent_Marker/PermanentMarker-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Philosopher";
+	src: font-url("Philosopher/Philosopher-Regular.ttf") format("truetype");
+}
+
+main {
+	strong {
+		font-family: "Merriweather Bold";
+	}
+	em {
+		font-family: "Merriweather Italic";
+	}
+}

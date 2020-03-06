@@ -1,0 +1,45 @@
+%header
+  %h1{ :hidden => true }
+    %strong
+      Leen Verheyen
+  
+  %nav.d-md-none{ :id => "mobileNav" }
+    %ul		
+      %li{ :onclick => "toggleMenu()", :class => "hamburger note" }
+        &mdash;
+        %br
+        &mdash;
+        %br
+        &mdash;
+        %br
+
+  %nav.menuHidden#mobileMenu
+    %ul
+      %li.hamburger{ :onclick => "toggleMenu()" }	
+        X
+      %li{ :onclick => "noteLink(event)" }
+        %a{ :href => "leen.php" }
+          leen
+      %li{ :onclick => "noteLink(event)" }
+        %a{ :href => "filosofie.php" }
+          filosofie
+      %li{ :onclick => "noteLink(event)" }
+        %a{ :href => "literatuur.php" }
+          literatuur
+      %li{ :onclick => "noteLink(event)" }
+        %a{ :href => "nieuws.php" }
+          nieuws
+      %li
+        = image_tag "logo.png", { :alt => "logo Leen Verheyen" }
+  
+  %nav.d-none.d-md-block#fullNav
+    %ul
+      %li.note{ :onclick => "noteLink(event)" }
+        - img = image_tag "logo.png", { :alt => "logo Leen Verheyen" }
+        = link_to img, root_path(), { :class => "logo" }
+      %li.note{ :onclick => "noteLink(event)" }
+        = link_to "filosofie", filosofie_path()
+      %li.note{ :onclick => "noteLink(event)" }
+        = link_to "literatuur", literatuur_path()
+      %li.note{ :onclick => "noteLink(event)" }
+        = link_to "nieuws", news_items_path()

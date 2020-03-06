@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 
 # haml
 gem 'haml', '~> 5.1', '>= 5.1.2'
+# Bootstrap
+gem 'bootstrap',  '~>4.3.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
