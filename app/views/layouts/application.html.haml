@@ -23,7 +23,7 @@
 
   %body
     .container-md
-      = render "layouts/header"
+      = render "shared/header"
 
       - flash.each do |name, msg|
         .flash_message
@@ -32,5 +32,5 @@
       %main.row
         = yield
 
-      = render "layouts/footer"
+      = render "shared/footer"
   
