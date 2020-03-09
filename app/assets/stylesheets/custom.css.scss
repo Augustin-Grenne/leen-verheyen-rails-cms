@@ -1,8 +1,10 @@
+@import "media-queries";
 @import "fonts";
 @import "notes";
 @import "header";
 @import "footer";
 @import "video";
+
 
 
 body {
@@ -32,34 +34,25 @@ main {
 
 // every article appears as if on a sheet of paper
 article{
-	@extend %note;
+	@include note;
 }
 
 // add the tack to the article
 article:after{
-	@extend %tack_top_middle;
+	@include tack_top_middle;
 }
 
-// images
-.tack-wrapper{
-	// centered wrapper to position the tacks, two for each image
+.jumbotron {
 	position: relative;
-	display: inline-block;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.tack-wrapper:before{
-	@extend %tack_top_left;
-}
-
-.tack-wrapper:after{
-	@extend %tack_top_right;
-}
-
-// extra breeding room for 'eyecatcher'
-.jumbotron{
 	margin-bottom: 125px;
 	padding: 0;
+}
+
+.jumbotron:before{
+	@include tack_top_left;
+}
+
+.jumbotron:after{
+	@include tack_top_right;
 }
 

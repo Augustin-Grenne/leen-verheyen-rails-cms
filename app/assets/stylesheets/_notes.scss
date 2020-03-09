@@ -1,5 +1,5 @@
 // create a visual sheet of paper
-%note{
+@mixin note{
 	padding: 4rem 3rem;
 	background-color: white;
 	box-shadow: 1px 1px 3px #555, -1px 1px 5px #555;
@@ -7,45 +7,46 @@
 }
 
 // display image of tack in the top middle of sheet of paper
-%tack_top_middle{
+@mixin tack_top_middle{
 	content: "";
 	position: absolute;
 	background-image: image-url("tack.png");
-	top: -25px;
-	left: 50%;
 	width: 75px;
 	height: 71px;
-	transform: translateX(-60%);
+	top: 0;
+	left: 50%;
+	transform: translate(-60%, -35%);
 }
 
 // display image of tack in the top left of sheet of paper
-%tack_top_left{
+@mixin tack_top_left{
 	content: "";
 	position: absolute;
 	background-image: image-url("tack.png");
-	top: -25px;
-	left: -40px;
 	width: 75px;
 	height: 71px;
+	top: 0;
+	left: 0;
+	transform: translate(-55%, -35%);
 }
 
 // display image of tack in the top right of sheet of paper
-%tack_top_right{
+@mixin tack_top_right{
 	content: "";
 	position: absolute;
 	background-image: image-url("tack.png");
-	top: -25px;
-	right: -20px;
 	width: 75px;
 	height: 71px;
+	top: 0;
+	right: 0;
+	transform: translate(35%, -35%);
 }
 
 .note{
-	@extend %note;
+	@include note;
 }
 
 .note:before{
-	@extend %tack_top_middle;
-	-webkit-filter: hue-rotate(0deg); /* Safari */
-	filter: hue-rotate(0deg);
+	@include tack_top_middle;
+
 }

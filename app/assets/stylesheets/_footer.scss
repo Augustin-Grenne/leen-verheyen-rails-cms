@@ -1,21 +1,23 @@
 footer {
-	@extend %note;
+	@include note;
 	font-size: 14px;
 	line-height: 1.75;
   padding: 2rem;
   margin-bottom: 3rem;
   text-align: center;	
 
-  ul {
-    text-indent: 4.5rem;
-    text-align: left;
-    li {
-      list-style-type: none;
+  @include respond-below(sm) {
+    .col-md-4{
+      margin-top: 2.5rem;
     }
   }
 
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
   .twit{
-    margin-top: 25px;
     display: inline-block;
   }
   
@@ -29,12 +31,21 @@ footer {
       vertical-align: text-top;
     }
   }
-}
 
-footer:before{
-	@extend %tack_top_left;
-}
+  &:before{ 
+    @include tack_top_middle;
+  }
+  
+  @include respond-above(sm) {
+    &:before{ 
+      @include tack_top_left;
+    }
+  }
+  
+  @include respond-above(sm) {
+    &:after{ 
+      @include tack_top_right;
+    }
+  }
 
-footer:after{
-	@extend %tack_top_right;
 }
