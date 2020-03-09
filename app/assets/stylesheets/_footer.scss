@@ -1,0 +1,40 @@
+footer {
+	@extend %note;
+	font-size: 14px;
+	line-height: 1.75;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;	
+
+  ul {
+    text-indent: 4.5rem;
+    text-align: left;
+    li {
+      list-style-type: none;
+    }
+  }
+
+  .twit{
+    margin-top: 25px;
+    display: inline-block;
+  }
+  
+  // credits
+  #website_by{
+    font-family: Philosopher;
+  }
+
+  .copyright {
+    .copy-symbol {
+      vertical-align: text-top;
+    }
+  }
+}
+
+footer:before{
+	@extend %tack_top_left;
+}
+
+footer:after{
+	@extend %tack_top_right;
+}

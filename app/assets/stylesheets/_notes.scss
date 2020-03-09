@@ -1,9 +1,7 @@
 // create a visual sheet of paper
 %note{
-	margin: 50px auto;
-	padding: 75px 50px;
+	padding: 4rem 3rem;
 	background-color: white;
-	max-width: 650px;
 	box-shadow: 1px 1px 3px #555, -1px 1px 5px #555;
 	position: relative;
 }
@@ -40,4 +38,14 @@
 	right: -20px;
 	width: 75px;
 	height: 71px;
+}
+
+.note{
+	@extend %note;
+}
+
+.note:before{
+	@extend %tack_top_middle;
+	-webkit-filter: hue-rotate(0deg); /* Safari */
+	filter: hue-rotate(0deg);
 }
