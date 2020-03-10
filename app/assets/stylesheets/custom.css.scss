@@ -35,6 +35,7 @@ main {
 // every article appears as if on a sheet of paper
 article{
 	@include note;
+	margin-bottom: 45px;
 }
 
 // add the tack to the article

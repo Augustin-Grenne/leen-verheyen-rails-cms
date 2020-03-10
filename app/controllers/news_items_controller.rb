@@ -12,6 +12,8 @@ class NewsItemsController < ApplicationController
 
   def create
     @news_item = NewsItem.new(news_item_params)
+    @news_item.user = User.first # temporarily
+
     if @news_item.save
       flash[:notice] = "The news item was sucessfully created."
       redirect_to news_item_path(@news_item)

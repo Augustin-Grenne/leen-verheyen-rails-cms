@@ -13,3 +13,9 @@
           = link_to "Verwijderen", news_item_path(news_item), method: :delete, data: { confirm: "Are you certain you want to delete this news item?" } 
         %p  
           = news_item.body
+        %p 
+          %small
+            Van:
+            = news_item.user.username if news_item.user
+            Gemaakt op 
+            = news_item.created_at.strftime("%d/%m/%Y").to_s
