@@ -24,10 +24,12 @@
   %body
     .container-md
       = render "shared/header"
-
+      
       - flash.each do |name, msg|
-        .flash_message
-          = msg
+        .row
+          .flash_message.note.col-md-8.offset-md-2.col-lg-6.offset-lg-3
+            %h5.center
+              = msg
 
       %main
         = yield

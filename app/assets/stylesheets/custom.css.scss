@@ -32,6 +32,10 @@ main {
 	padding: 6rem 0;
 }
 
+.center {
+	text-align: center;
+}
+
 // every article appears as if on a sheet of paper
 article{
 	@include note;

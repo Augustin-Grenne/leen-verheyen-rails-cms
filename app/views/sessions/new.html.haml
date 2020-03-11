@@ -1,0 +1,20 @@
+.col-12.col-md-8.offset-md-2
+  .note
+    %h1.center
+      Inloggen
+    .d-flex.justify-content-center
+      = form_for :session, url: login_path do |f|
+        .row
+          .col 
+            = f.label :email, "e-mail"
+          .col  
+            = f.text_field :email, { :placeholder => "persoon@voorbeeld.be" }
+        .row
+          .col 
+            = f.label :password, "paswoord"
+          .col
+            = f.password_field :password, placeholder: "*****", autocomplete: false
+        .row 
+          .col
+            %button 
+              = f.submit "Aanmelden"

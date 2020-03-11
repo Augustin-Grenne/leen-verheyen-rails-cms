@@ -1,6 +1,7 @@
 class NewsItemsController < ApplicationController
   
   before_action :set_news_item, only:[:show, :edit, :update, :destroy]
+  before_action :require_user, except:[:show, :index]
 
   def index
     @news_items = NewsItem.all.order("created_at ASC")
@@ -40,10 +41,10 @@ class NewsItemsController < ApplicationController
   def destroy
     if @news_item.destroy
       flash[:notice] = "News item was sucessfully deleted."
-      redirect_to news_items_path
+      redirect_to news_items_path()
     else
       flash[:notice] = "News item could not be deleted."
-      redirect_to news_items_path
+      redirect_to news_items_path()
     end
   end
 
