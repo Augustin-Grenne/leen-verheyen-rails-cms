@@ -2,6 +2,7 @@ class NewsItemsController < ApplicationController
   
   before_action :set_news_item, only:[:show, :edit, :update, :destroy]
   before_action :require_user, except:[:show, :index]
+  before_action :require_same_user, only:[:edit, :update, :destroy]
 
   def index
     @news_items = NewsItem.all.order("created_at ASC")
@@ -13,7 +14,7 @@ class NewsItemsController < ApplicationController
 
   def create
     @news_item = NewsItem.new(news_item_params)
-    @news_item.user = User.first # temporarily
+    @news_item.user = current_user
 
     if @news_item.save
       flash[:notice] = "The news item was sucessfully created."
@@ -52,8 +53,18 @@ private
   def set_news_item
     @news_item = NewsItem.find(params[:id])
   end
+  
   def news_item_params
     params.require(:news_item).permit(:title, :body, :show)
+  end
+
+  def require_same_user
+    if current_user.admin
+      return true
+    end
+    if current_user != @news_item.user
+      redirect_to root_path
+    end
   end
 
 end
