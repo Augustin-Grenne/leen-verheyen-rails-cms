@@ -1,30 +1,33 @@
-%footer
-  .row
-    .col-xs-12.col-lg-10.offset-lg-1	
-      .row
-        .col-md-4
-          :javascript
-            let mail = ["leen.verheyen", "@", "uantwerpen", ".be"].join("");
-            document.write("<a href=mailto:" + mail + ">" + mail +"</a>")
-          %div
-            %a{ :target => "_blank", :href => "https://twitter.com/VerheyenLeen" }
-              = image_tag "twitter_logo.png", { :class => "twit"}
-        .col-md-4
-          %p
-            Je vindt Leen ook op:
-          %p
-            %a{ :target => "_blank", :href => "http://uantwerpen.academia.edu/LeenVerheyen" } 
-              Academia
-          %p
-            %a{ :target => "_blank", :href => "https://www.uantwerpen.be/nl/personeel/leen-verheyen/"} 
-              Universiteit Antwerpen
-          %p
-            %a{ :target => "_blank", :href => "https://leenverheyen.wordpress.com" }
-              Wordpress
-        .col-md-4
-          .copyright
-            %span.copy-symbol
-              &copy;
-            = " " + Time.new.year.to_s + " Leen Verheyen" 
-          #website_by
-            webdesign: Augustin Grenné
+%footer.row
+  .col-xs-12.col-lg-10.offset-lg-1	
+    .row
+      .col-md-4
+        %a{ :href => "", :class => "email"}
+        :javascript
+          var mail = ["leen.verheyen", "@", "uantwerpen", ".be"].join("");
+          var href = `mailto:${mail}`;
+          var email = document.querySelector(".email");
+          email.setAttribute("href", href);
+          email.innerText = mail;
+        %div
+          %a{ :target => "_blank", :href => "https://twitter.com/VerheyenLeen" }
+            = image_tag "twitter_logo.png", { :class => "twit"}
+      .col-md-4
+        %p
+          Je vindt Leen ook op:
+        %p
+          %a{ :target => "_blank", :href => "http://uantwerpen.academia.edu/LeenVerheyen" } 
+            Academia
+        %p
+          %a{ :target => "_blank", :href => "https://www.uantwerpen.be/nl/personeel/leen-verheyen/"} 
+            Universiteit Antwerpen
+        %p
+          %a{ :target => "_blank", :href => "https://leenverheyen.wordpress.com" }
+            Wordpress
+      .col-md-4
+        .copyright
+          %span.copy-symbol
+            &copy;
+          = "#{Time.new.year.to_s} Leen Verheyen" 
+        #website_by
+          webdesign: Augustin Grenné

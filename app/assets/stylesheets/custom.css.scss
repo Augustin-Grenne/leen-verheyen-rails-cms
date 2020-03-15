@@ -6,12 +6,12 @@
 @import "video";
 
 
-
 body {
 	font-family: 'Merriweather', georgia, serif;
   background-image: image-url("cork_small.jpg");	
 	color: #222;
 	font-size: 16px;
+	overflow: initial;
 }
 
 // links
@@ -51,13 +51,35 @@ article:after{
 	position: relative;
 	margin-bottom: 125px;
 	padding: 0;
+
+	&:before{ 
+    @include tack_top_middle;
+  }
+  
+  @include respond-above(sm) {
+    &:before{ 
+      @include tack_top_left;
+    }
+  }
+  
+  @include respond-above(sm) {
+    &:after{ 
+      @include tack_top_right;
+    }
+  }
 }
 
-.jumbotron:before{
-	@include tack_top_left;
+.flash-message {
+	padding: 2.5rem 1.5rem 1rem;
+	margin-top: 50px;
+
+	h6 {
+		text-transform: uppercase;
+		font-variant: small-caps;
+	}
 }
 
-.jumbotron:after{
-	@include tack_top_right;
+.admin-actions{
+	padding: 0.5rem 1rem 1rem;
+	text-align: right;
 }
-

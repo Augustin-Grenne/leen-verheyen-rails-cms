@@ -1,152 +1,81 @@
 header {
-  padding-top: 3rem;
-}
-
-nav{
-  text-align: center;
-}
-
-nav li{
-	list-style-type: none;
-	cursor: pointer;
-}
-
-// so content will be centered
-nav li:first-child, #fullNav ul li:first-child{
-	margin-left: 0;	
-}
-
-nav a, nav a:link{
+	padding-top: 3rem;
 	font-family: 'Permanent Marker';
-	text-decoration: none;
-	display: block;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 22px;
-  letter-spacing: 1px;
-  width: 100%;
-  height: 100%;
-  color: #222;
-}
+	position: relative;
 
-nav a:link, nav a:visited{
-	color: #222;
-}
-
-nav ul li a:active {
-	color: grey;
-}
-
-
-#fullNav li:hover{
-	background-color: lightseagreen;
-}
-
-.hamburger{
-	font-family: "Permanent Marker";
-	font-weight: bold;
-	line-height: 0.25;
-	font-size: 60px;
-	display: inline-block;	
-	color: #222;
-	margin-left: 0!important;	
-	padding-top: 35px!important;
-}
-
-// drop last three smaller items to allign with larger logo
-#fullNav li:nth-child(1n+2){
-	margin-top: 345px / 2px + 50px;
-	margin-bottom: 0;
-	transform: translateY(-50%);
-}
-
-/*			Menu			*/
-
-/*
-// structure of both nav's and mobile menu (opened)
-
-nav#mobileNav
-	ul
-		li.hamburger
-		li > a > img.logo
-
-nav
-	ul#mobileMenu
-		li.hamburger
-		li > a * 4
-
-nav 
-	ul
-		li > a >img.logo
-		li > a * 3
-*/
-#mobileNav{
-	ul{
-		display: inline-block;
-		li{
-			margin: 50px auto;		
-			text-align: center;
-
-			padding: 25px;
-			float: left;
-			transition: all 0.2s;
+	nav {
+		.note {
+			display: inline-block;
+			padding: 0;
 			cursor: pointer;
 
-			margin-left: 50px;
+			:hover {
+				background-color: lightseagreen;
+			}
+
 		}
-		
-	}
-}
 
-.menuHidden{
-	top: 100%!important;
-}
-
-#mobileMenu{
-	padding: 25px 0;
-	width: 100vw; 
-	min-height: 100%;
-	max-height: 100%;
-	height: 100vh;
-	max-width: 100%;
-	min-width: 100%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 10;
-	background-color: white;
-	overflow: scroll;
-	transition: all 0.8s;
-
-	li{
-		display: block;
-		text-align: center;
-		margin-left: 0;
-		float: none;
-		a{
-			line-height: 3;
-			font-size: 26px;
-		}
-	}
-	li:first-child{
-		margin-bottom: 50px;	
-	}
-	li:last-child{
-		margin-top: 50px;	
-	}
-}
-
-#fullNav{
-	ul{
-		display: inline-block;
-		li{
-			padding: 25px;
-			float: left;
-			transition: all 0.2s;
+		.hamburger {
+			font-weight: bold;
+			line-height: 0.25;
+			font-size: 60px;
+			display: inline-block;	
 			cursor: pointer;
+			pointer-events: auto;
+			padding: 1.5rem 1rem 1rem;
+		}
 
-			padding-top: 75px;
-			margin-left: 50px;
+		a {
+				
+				display: block;
+				padding: 2.5rem 1.5rem 1rem;
+		}
+
+		.nav-mobile {
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 10;
+			width: 100%; 
+			height: 100%;
+			background-color: white;
+			padding: 20px 0;
+			transition: all 0.6s;
+			font-size: 2.5rem;
+			
+			&[hidden] {
+				top: 100%;
+				z-index: -10;
+			}
+
+			a {
+				padding: 0.5rem;
+			}
+
+			// .hamburger-close{
+			// 	cursor: pointer;
+			// }
+		}
+
+		a, a:link, a:visited{
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.3rem;
+			letter-spacing: 1px;
+			color: #222;
 		}
 	}
+
+	.admin {
+		position: absolute;
+		right: 0;
+		background-color: teal;
+		padding: 75px 1rem 1rem 1rem;
+		transform: translateY(-85px);	
+		a {
+			color: white;
+		}
+	}
+
 }

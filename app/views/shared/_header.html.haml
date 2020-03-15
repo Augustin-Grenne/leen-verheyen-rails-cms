@@ -1,45 +1,54 @@
 %header
-  %h2{ :hidden => true }
-    %strong
-      Leen Verheyen
-  
-  %nav.d-md-none{ :id => "mobileNav" }
-    %ul		
-      %li{ :onclick => "toggleMenu()", :class => "hamburger note" }
-        &mdash;
-        %br
-        &mdash;
-        %br
-        &mdash;
-        %br
+  - if current_user
+    %aside.admin
+      = link_to "log out", logout_path
 
-  %nav.menuHidden#mobileMenu
-    %ul
-      %li.hamburger{ :onclick => "toggleMenu()" }	
-        X
-      %li{ :onclick => "noteLink(event)" }
-        %a{ :href => "leen.php" }
-          leen
-      %li{ :onclick => "noteLink(event)" }
-        %a{ :href => "filosofie.php" }
-          filosofie
-      %li{ :onclick => "noteLink(event)" }
-        %a{ :href => "literatuur.php" }
-          literatuur
-      %li{ :onclick => "noteLink(event)" }
-        %a{ :href => "nieuws.php" }
-          nieuws
-      %li
-        = image_tag "logo.png", { :alt => "logo Leen Verheyen" }
-  
-  %nav.d-none.d-md-block#fullNav
-    %ul
-      %li.note{ :onclick => "noteLink(event)" }
-        - img = image_tag "logo.png", { :alt => "logo Leen Verheyen" }
-        = link_to img, root_path(), { :class => "logo" }
-      %li.note{ :onclick => "noteLink(event)" }
+  -# mobile menu
+  %nav.d-md-none
+    .row.d-flex.justify-content-center
+      .hamburger.note{ :onclick => "toggleMenu()" } 
+        .hamburger-open
+          %div
+            &mdash;
+          %div
+            &mdash;
+          %div
+            &mdash;
+    .nav-mobile.d-flex.flex-column.justify-content-around{ :hidden => true }
+      .d-flex.justify-content-center.hamburger-close{ :onclick => "toggleMenu()" }
+        %span
+          X
+      .d-flex.justify-content-center
+        = link_to "leen", root_path()
+      .d-flex.justify-content-center
         = link_to "filosofie", filosofie_path()
-      %li.note{ :onclick => "noteLink(event)" }
+      .d-flex.justify-content-center
         = link_to "literatuur", literatuur_path()
-      %li.note{ :onclick => "noteLink(event)" }
+      .d-flex.justify-content-center
         = link_to "nieuws", news_items_path()
+      .d-flex.justify-content-center
+        = image_tag "logo.png", { :alt => "logo Leen Verheyen", :height => "75" }
+    
+  -# menu for medium screens and above
+  %nav.row
+    .col-lg-10.offset-lg-1.d-none.d-md-flex.justify-content-around.align-items-center
+      .note
+        - img = image_tag "logo.png", { :alt => "logo Leen Verheyen", :height => "150" }
+        = link_to img, root_path(), { :class => "logo" }
+      .note
+        = link_to "filosofie", filosofie_path()
+      .note
+        = link_to "literatuur", literatuur_path()
+      .note
+        = link_to "nieuws", news_items_path()
+
+  :javascript 
+    function toggleMenu() {
+      document.querySelector(".nav-mobile").toggleAttribute("hidden");
+      if (!document.querySelector(".nav-mobile").hasAttribute("hidden")){
+        document.querySelector("body").style.overflow = "hidden";
+      }
+      else{
+        document.querySelector("body").style.overflow = "initial";
+      }
+    }
