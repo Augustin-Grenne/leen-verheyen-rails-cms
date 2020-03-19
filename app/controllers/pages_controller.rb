@@ -4,4 +4,12 @@ class PagesController < ApplicationController
   
   end
 
+  def filosofie
+
+  end
+
+  def literatuur
+
+  end
+  
 end
