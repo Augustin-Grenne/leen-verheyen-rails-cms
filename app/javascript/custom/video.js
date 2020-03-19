@@ -1,4 +1,4 @@
-window.onload = function(){
+document.addEventListener("turbolinks:load", function () {
 
   // media query event handler
   if (matchMedia) {
@@ -9,20 +9,19 @@ window.onload = function(){
 
   // media query change
   function WidthChange(mq) {
+    const youtube = document.querySelectorAll(".youtube");
+    
     if (mq.matches) {
-      var youtube = document.querySelectorAll(".youtube");
+      for (let i = 0; i < youtube.length; i++) {
+        let source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/0.jpg";
+        let image = new Image();
 
-      for (var i = 0; i < youtube.length; i++) {
-
-        var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/0.jpg";
-
-        var image = new Image();
         image.src = source;
         image.addEventListener("load", function () {
           youtube[i].appendChild(image);
         }(i));
 
-        var href = "https://youtube.com/watch?v=" + youtube[i].dataset.embed;
+        let href = "https://youtube.com/watch?v=" + youtube[i].dataset.embed;
         youtube[i].addEventListener("click", function () {
           window.open(href, "_blank");
         });
@@ -30,21 +29,17 @@ window.onload = function(){
     }
     else {
       // lazy load for youtube video's
-      var youtube = document.querySelectorAll(".youtube");
-
       for (var i = 0; i < youtube.length; i++) {
+        let source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/0.jpg";
+        let image = new Image();
 
-        var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/0.jpg";
-
-        var image = new Image();
         image.src = source;
         image.addEventListener("load", function () {
           youtube[i].appendChild(image);
         }(i));
 
         youtube[i].addEventListener("click", function () {
-
-          var iframe = document.createElement("iframe");
+          let iframe = document.createElement("iframe");
 
           iframe.setAttribute("frameborder", "0");
           iframe.setAttribute("allowfullscreen", "");
@@ -59,10 +54,11 @@ window.onload = function(){
 
 
   // lazy load for vimeo video's
-  var vimeo = document.querySelectorAll(".vimeo");
+  const vimeo = document.querySelectorAll(".vimeo");
 
-  for (var i = 0; i < vimeo.length; i++) {
-    var source = vimeo[i].dataset.src;
+  for (let i = 0; i < vimeo.length; i++) {
+    let source = vimeo[i].dataset.src;
     vimeo[i].setAttribute("src", source);
   }
-}
+
+})
