@@ -52,7 +52,6 @@ document.addEventListener("turbolinks:load", function () {
     }
   }
 
-
   // lazy load for vimeo video's
   const vimeo = document.querySelectorAll(".vimeo");
 
